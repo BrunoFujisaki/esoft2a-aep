@@ -1,10 +1,6 @@
 # esoft2a-aep
-Participantes:  
-Gustavo Beneton
-Bruno Fujisaki
-Eric Leite
-Lucas Vinicius.
-Este programa foi desenvolvido como Projeto AEP Curso: Engenharia de Software - ESOFT2-SA.   
+Participantes: Gustavo Beneton, Bruno Fujisaki, Eric Leite, Lucas Vinicius.
+
 Objetivo:
 Este sistema foi criado para facilitar a gestão de contas,
 permitindo a inserção, alteração, listagem e exclusão de
