@@ -143,7 +143,7 @@ void menu(){
 
         case '7':
             printf("\nSaindo... Ate logo!\n");
-            break;
+            
 		}
     } while (op != '7');
 }
@@ -155,70 +155,76 @@ void inserir(){
 	
 	while (sel < 1){
 		
-		do{
+		if (totuser == 20){
+			system("cls");
+			printf("O limite de usuários foi atingido!\n");
+			printf("\nPressione qualquer tecla para voltar ao menu...");
+			getch();
+			return;
+		}else {
 			do{
-				
-				system("cls");
-        		printf("|   INSERIR   |\n");
-        		printf("|-------------|\n");
-        		espaco = false;
-        		printf("<< Usuario: ");
-        		fgets(nome[totuser], sizeof(nome[totuser]), stdin);
-        		nome[totuser][strcspn(nome[totuser], "\n")] = '\0'; 
-        		tam = strlen(nome[totuser]);
+				do{
+					system("cls");
+        			printf("|   INSERIR   |\n");
+        			printf("|-------------|\n");
+        			espaco = false;
+        			printf("<< Usuario: ");
+        			fgets(nome[totuser], sizeof(nome[totuser]), stdin);
+        			nome[totuser][strcspn(nome[totuser], "\n")] = '\0'; 
+        			tam = strlen(nome[totuser]);
         	
-        		for (i = 0;  i < tam; i++){
-        			if (nome[totuser][i] == ' '){
-        				espaco = true;
+        			for (i = 0;  i < tam; i++){
+        				if (nome[totuser][i] == ' '){
+        					espaco = true;
+						}
 					}
-				}
 			
-				if (espaco){
-					printf("Não é permitido espaço no nome\n");
+					if (espaco){
+						printf("Não é permitido espaço no nome\n");
+						getch();
+					}	
+				} while(espaco); 
+			
+				p = buscaUsuario(nome[totuser]);
+		
+				if (p != -1){
+					printf("Usuário já cadastrado!\n");
 					getch();
+				}
+			} while (p != -1 || strlen(nome[totuser]) <= 3 || strlen(nome[totuser]) >= 12);
+	
+			do{
+				printf("<< Senha: ");
+				fgets(senha[totuser], sizeof(senha[totuser]), stdin);
+        		senha[totuser][strcspn(senha[totuser], "\n")] = '\0'; 
+		
+				senha_valida = senhaValida(senha[totuser]);
+        		if (!senha_valida) {
+            		printf("\n!! Senha inválida !!\n>> Use entre 8 e 12 caracteres, com uma letra maiúscula, uma minúscula, um número e um símbolo especial.\n\n");
+        			getch();
 				}	
-			} while(espaco); 
-			
-			p = buscaUsuario(nome[totuser]);
-		
-			if (p != -1){
-				printf("Usuário já cadastrado!\n");
-				getch();
-			}
-		
-		} while (p != -1 || strlen(nome[totuser]) <= 3 || strlen(nome[totuser]) >= 12);
+			} while (!senha_valida);
 	
-		do{
-			printf("<< Senha: ");
-			fgets(senha[totuser], sizeof(senha[totuser]), stdin);
-        	senha[totuser][strcspn(senha[totuser], "\n")] = '\0'; 
-		
-			senha_valida = senhaValida(senha[totuser]);
-        	if (!senha_valida) {
-            	printf("\n!! Senha inválida !!\n>> Use entre 8 e 12 caracteres, com uma letra maiúscula, uma minúscula, um número e um símbolo especial.\n\n");
-        		getch();
-			}	
-		} while (!senha_valida);
-	
-		do{
-			printf("<< Confirme a senha: ");
-        	fgets(confirma_senha, sizeof(confirma_senha), stdin);
-        	confirma_senha[strcspn(confirma_senha, "\n")] = '\0'; 
+			do{
+				printf("<< Confirme a senha: ");
+        		fgets(confirma_senha, sizeof(confirma_senha), stdin);
+        		confirma_senha[strcspn(confirma_senha, "\n")] = '\0'; 
 
-        	if (strcmp(senha[totuser], confirma_senha) != 0) {
-            	printf("\n!! As senhas não coincidem !! \n>> Por favor, verifique e tente novamente.\n\n");
-       	 		getch();
+        		if (strcmp(senha[totuser], confirma_senha) != 0) {
+            		printf("\n!! As senhas não coincidem !! \n>> Por favor, verifique e tente novamente.\n\n");
+       	 			getch();
+				}
+			} while (strcmp(senha[totuser], confirma_senha) != 0);
+	
+			totuser++;
+			arquivo(1);
+			classifica();
+			printf("\n!! Usuário cadastrado com sucesso !! \n<< Teclar Espaço para continuar / Enter para voltar ao Menu >>\n");
+			s = getch();
+	
+			if (s != ' '){
+				sel = 1;
 			}
-		} while (strcmp(senha[totuser], confirma_senha) != 0);
-	
-		totuser++;
-		arquivo(1);
-		classifica();
-		printf("\n!! Usuário cadastrado com sucesso !! \n<< Teclar Espaço para continuar / Enter para voltar ao Menu >>\n");
-		s = getch();
-	
-		if (s != ' '){
-			sel = 1;
 		}
 	}
 }
