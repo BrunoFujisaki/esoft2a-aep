@@ -5,8 +5,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <windows.h>
-
-
+//=================================================
 char nome[20][100];
 char senha[20][100];
 char op,op2;
