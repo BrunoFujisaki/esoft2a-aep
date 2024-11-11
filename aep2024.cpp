@@ -89,14 +89,14 @@ void gerenciar() {
         	break;
         
         default:
-        	printf(" OpÁ„o inv·lida! Tente novamente.\n");
+        	printf(" Op√ß√£o inv√°lida! Tente novamente.\n");
         	getch();
         
         }
     }while(op2 != '3');
     
 }
-///////////////////////////////////////////////////////////////
+//=================================================
 
 void menu(){
 	
@@ -108,7 +108,7 @@ void menu(){
         printf("| (2) Alterar   |\n");
         printf("| (3) Excluir   |\n");
         printf("| (4) Listar    |\n");
-        printf("| (5) CrÈditos  |\n");
+        printf("| (5) Cr√©ditos  |\n");
         printf("| (6) Gerenciar |\n"); 
         printf("| (7) Fim       |\n");
         printf("|_______________|\n");
@@ -148,7 +148,7 @@ void menu(){
 		}
     } while (op != '7');
 }
-///////////////////////////////////////////////////////////////
+//=================================================
 void inserir(){
 	char confirma_senha[100], sel = 0, s;
 	bool senha_valida, espaco;
@@ -175,7 +175,7 @@ void inserir(){
 				}
 			
 				if (espaco){
-					printf("N„o È permitido espaÁo no nome\n");
+					printf("N√£o √© permitido espa√ßo no nome\n");
 					getch();
 				}	
 			} while(espaco); 
@@ -183,7 +183,7 @@ void inserir(){
 			p = buscaUsuario(nome[totuser]);
 		
 			if (p != -1){
-				printf("Usu·rio j· cadastrado!\n");
+				printf("Usu√°rio j√° cadastrado!\n");
 				getch();
 			}
 		
@@ -196,7 +196,7 @@ void inserir(){
 		
 			senha_valida = senhaValida(senha[totuser]);
         	if (!senha_valida) {
-            	printf("\n!! Senha inv·lida !!\n>> Use entre 8 e 12 caracteres, com uma letra mai˙scula, uma min˙scula, um n˙mero e um sÌmbolo especial.\n\n");
+            	printf("\n!! Senha inv√°lida !!\n>> Use entre 8 e 12 caracteres, com uma letra mai√∫scula, uma min√∫scula, um n√∫mero e um s√≠mbolo especial.\n\n");
         		getch();
 			}	
 		} while (!senha_valida);
@@ -207,7 +207,7 @@ void inserir(){
         	confirma_senha[strcspn(confirma_senha, "\n")] = '\0'; 
 
         	if (strcmp(senha[totuser], confirma_senha) != 0) {
-            	printf("\n!! As senhas n„o coincidem !! \n>> Por favor, verifique e tente novamente.\n\n");
+            	printf("\n!! As senhas n√£o coincidem !! \n>> Por favor, verifique e tente novamente.\n\n");
        	 		getch();
 			}
 		} while (strcmp(senha[totuser], confirma_senha) != 0);
@@ -215,7 +215,7 @@ void inserir(){
 		totuser++;
 		arquivo(1);
 		classifica();
-		printf("\n!! Usu·rio cadastrado com sucesso !! \n<< Teclar EspaÁo para continuar / Enter para voltar ao Menu >>\n");
+		printf("\n!! Usu√°rio cadastrado com sucesso !! \n<< Teclar Espa√ßo para continuar / Enter para voltar ao Menu >>\n");
 		s = getch();
 	
 		if (s != ' '){
@@ -232,7 +232,7 @@ void alterar(){
 	system("cls");
     printf("|              ALTERAR             |\n");
     printf("|----------------------------------|\n");
-    printf("|Tecle ESPA«O para Exibir Lista	   |\n");
+    printf("|Tecle ESPA√áO para Exibir Lista	   |\n");
     printf("|Tecle ENTER para Continuar    	   |\n");
     printf("|Tecle ESC para Voltar para o Menu |\n");
     printf("|----------------------------------|\n");
@@ -255,7 +255,7 @@ void alterar(){
 				p = buscaUsuario(usuario);
 		
 				if (p == -1){
-					printf("!! Usu·rio Inv·lido !!");
+					printf("!! Usu√°rio Inv√°lido !!");
 					getch();
 				
 				}
@@ -268,7 +268,7 @@ void alterar(){
 
         		vsenha = senhaValida(senha[p]);
         		if (!vsenha) {
-            	printf("!! Senha inv·lida !! \n-Use entre 8 e 12 caracteres, letra mai˙scula, no mÌnimo uma min˙scula, n˙meros e um sÌmbolo especial\n");
+            	printf("!! Senha inv√°lida !! \n-Use entre 8 e 12 caracteres, letra mai√∫scula, no m√≠nimo uma min√∫scula, n√∫meros e um s√≠mbolo especial\n");
         		}
 			} while (!vsenha);
 	
@@ -277,7 +277,7 @@ void alterar(){
 				fgets(csenha, sizeof(csenha), stdin);
 				csenha[strcspn(csenha, "\n")] = '\0';
 				if (strcmp(senha[p], csenha) != 0) {
-        			printf("\n!! As senhas n„o coincidem !! \n>> Por favor, verifique e tente novamente.\n\n");
+        			printf("\n!! As senhas n√£o coincidem !! \n>> Por favor, verifique e tente novamente.\n\n");
        			}
 			} while (strcmp(senha[p], csenha) != 0);
 	
@@ -292,7 +292,7 @@ void alterar(){
 		
 		default: 
 			printf("\n");
-        	printf("!! OpÁ„o inv·lida !! \n");
+        	printf("!! Op√ß√£o inv√°lida !! \n");
         	printf(">> Tecle novamente << \n");
         	getch();	
 			alterar();
@@ -326,18 +326,18 @@ void excluir(){
 			system("cls");
 			printf("|               EXCLUIR            |\n");
     		printf("|----------------------------------|\n");
-			printf("Nome do Usu·rio: ");
+			printf("Nome do Usu√°rio: ");
 			fgets(usuario, sizeof(usuario), stdin);
 			usuario[strcspn(usuario, "\n")] = '\0';
 			p = buscaUsuario(usuario);
 		
 			if (p == -1){
-				printf("!! Usu·rio Inv·lido !!");
+				printf("!! Usu√°rio Inv√°lido !!");
 				getch();
 			}
 		} while (p == -1);
 	
-		printf("VocÍ tem certeza que deseja excluir o usu·rio %s? (S/N): ", usuario);
+		printf("Voc√™ tem certeza que deseja excluir o usu√°rio %s? (S/N): ", usuario);
     	confirm = getch();
 	
 		if (confirm == 'S' || confirm == 's'){
@@ -347,9 +347,9 @@ void excluir(){
 			}
 			totuser--;
 			arquivo(1);
-			printf("\n!! Usu·rio excluÌdo com sucesso !!\n");
+			printf("\n!! Usu√°rio exclu√≠do com sucesso !!\n");
 		}else {
-			printf("\nExclus„o cancelada.\n");
+			printf("\nExclus√£o cancelada.\n");
 		}
 		getch();
 		break;
@@ -360,7 +360,7 @@ void excluir(){
 		
 	default: 
 		printf("\n");
-        printf("!! OpÁ„o inv·lida !! \n");
+        printf("!! Op√ß√£o inv√°lida !! \n");
         printf(">> Tecle novamente << \n");
         getch();	
 		alterar();
@@ -377,11 +377,11 @@ void listar(int tp){
 	system("cls");
 	
 	if (totuser < 1){
-		printf("!! N„o h· usu·rios cadastrados !!");
+		printf("!! N√£o h√° usu√°rios cadastrados !!");
 		getch();
 	}else {
 		printf("---------------------------------------------------------\n");
-		printf("%-25s %-25s\n", "Usu·rio", "Senha");
+		printf("%-25s %-25s\n", "Usu√°rio", "Senha");
 		printf("---------------------------------------------------------\n");
 	
 		for (x = 0; x < totuser; x++){
@@ -437,10 +437,10 @@ void creditos(){
     printf("\n");
     printf("Objetivo:\n");
     printf("\n");
-    printf("Este sistema foi criado para facilitar a gest„o de contas, \n");
-    printf("permitindo a inserÁ„o, alteraÁ„o, listagem e exclus„o de \n");
-    printf("contas com seguranÁa e criptografia de senhas, garantindo \n");
-    printf("a proteÁ„o de informaÁıes sensÌveis.\n");
+    printf("Este sistema foi criado para facilitar a gest√£o de contas, \n");
+    printf("permitindo a inser√ß√£o, altera√ß√£o, listagem e exclus√£o de \n");
+    printf("contas com seguran√ßa e criptografia de senhas, garantindo \n");
+    printf("a prote√ß√£o de informa√ß√µes sens√≠veis.\n");
     printf("\n");
     printf("------------------------------------------------------------\n");
     printf("|            Obrigado por utilizar nosso programa!         |\n");
@@ -575,15 +575,15 @@ void arquivo(int tp){ //0 - leitura / 1 - gravacao
 
           if (x % 2 == 0) { //linhas pares: nome
               strcpy(nome[totuser], linha);
-          } else {           //linhas Ìmpares: senha
+          } else {           //linhas √≠mpares: senha
               strcpy(senha[totuser], linha);
               totuser++;
           }
           x++;
         }
         fclose(file);
-    } else { //modo de gravaÁ„o
-    file = fopen("NomeArq.txt", "w"); //abre o arquivo para gravaÁ„o
+    } else { //modo de grava√ß√£o
+    file = fopen("NomeArq.txt", "w"); //abre o arquivo para grava√ß√£o
     if (file != NULL) {
         for (x = 0; x < totuser; x++) { 
           strcpy(tmp, nome[x]); //copia o nome[x] em tmp
